@@ -1,0 +1,80 @@
+<mxfile host="Electron">
+  <diagram name="Roadmap" id="roadmap-rates"><mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2360" pageHeight="1040" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="h6" value="6 месяцев" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;fontSize=16;fontStyle=1;align=center;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="230" y="20" width="1400" height="56" as="geometry" />
+    </mxCell>
+    <mxCell id="hy" value="Год" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;fontSize=16;fontStyle=1;align=center;fontColor=#333333;" vertex="1" parent="1">
+      <mxGeometry x="1650" y="20" width="660" height="56" as="geometry" />
+    </mxCell>
+    <mxCell id="lane0" value="" style="shape=rect;fillColor=#fff2cc;strokeColor=none;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="90" width="2080" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane1" value="" style="shape=rect;fillColor=#fff2cc;strokeColor=none;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="230" width="2080" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane2" value="" style="shape=rect;fillColor=#fff2cc;strokeColor=none;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="370" width="2080" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane3" value="" style="shape=rect;fillColor=#fff2cc;strokeColor=none;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="510" width="2080" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane4" value="" style="shape=rect;fillColor=#fff2cc;strokeColor=none;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="650" width="2080" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="lane5" value="" style="shape=rect;fillColor=#fff2cc;strokeColor=none;html=1;" vertex="1" parent="1">
+      <mxGeometry x="230" y="790" width="2080" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="sys0" value="Excel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="20" y="90" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="sys1" value="Система кол-центра" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="20" y="230" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="sys2" value="Система партнёрского кол-центра" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="20" y="370" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="sys3" value="Сайт" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="20" y="510" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="sys4" value="Интернет-банк" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="20" y="650" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="sys5" value="АБС" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="20" y="790" width="200" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="t1" value="T1. Отдать файл актуальных ставок" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="250" y="125" width="360" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t2" value="T2. Загрузить файл и показать ставки оператору" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="640" y="265" width="420" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t3" value="T3. Принимать заявку с сайта" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="1090" y="265" width="320" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t4" value="T4. Получить файл по SFTP и показать ставки" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="640" y="405" width="460" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t5" value="T5. Список депозитов и заявка" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="1090" y="545" width="400" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t6" value="T6. СМС-код в ядре" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="250" y="685" width="360" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t7" value="T7. Открытие депозита: счёт и сумма" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="640" y="685" width="420" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t8" value="T8. Подтверждение условий и СМС" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="1090" y="825" width="480" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t9" value="T9. Открытие депозита без бэк-офиса" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="1680" y="685" width="600" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="t10" value="T10. Открытие без бэк-офиса, в отделении фронт-офис" style="shape=rect;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacingLeft=8;rounded=0;" vertex="1" parent="1">
+      <mxGeometry x="1680" y="825" width="600" height="70" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel></diagram>
+</mxfile>
