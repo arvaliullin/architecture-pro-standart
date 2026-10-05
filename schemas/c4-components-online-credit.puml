@@ -1,0 +1,50 @@
+@startuml c4-components-online-credit
+!RELATIVE_INCLUDE = "."
+!include c4/C4_Component.puml
+
+title Компоненты онлайн-заявки на кредит
+
+Person(credit_mgr, "Сотрудник кредитования", "Обрабатывает заявку")
+
+System(site, "Сайт", "PHP, React")
+System(ibank, "Интернет-банк", "ASP.NET MVC 4.5, .NET Framework 4.5")
+System(abs, "АБС", "Delphi, Oracle, PL/SQL")
+System(sms, "СМС-шлюз", "Уведомления и СМС-код")
+System_Ext(bureau, "Бюро кредитных историй", "REST API")
+
+Container_Boundary(conveyor, "Кредитный конвейер") {
+  Component(online, "Онлайн-вход заявок", "Java", "Приём заявок сайта и интернет-банка")
+  Component(process, "Кредитный процесс", "Camunda, Java", "Обработка заявки и статусов")
+  ComponentDb(conveyor_db, "База конвейера", "Oracle", "Заявки, решения и договоры")
+}
+
+Container_Boundary(scoring, "Система скоринга") {
+  Component(score_api, "API скоринга", "Python, Flask REST API", "Приём запроса на оценку")
+  Component(ml, "ML-сервис", "Python", "Расчёт итогового скоринга")
+  ComponentDb(score_db, "База скоринга", "PostgreSQL", "Данные скоринга")
+}
+
+Rel(site, online, "Заявка", "HTTPS")
+Rel(online, site, "Условия и решение", "HTTPS")
+Rel(ibank, online, "Заявка", "HTTPS")
+Rel(online, ibank, "Условия, предложение и статус", "HTTPS")
+Rel(online, conveyor_db, "Сохраняет заявку")
+Rel(online, process, "Запускает обработку")
+Rel(process, online, "Решение и статус")
+Rel(credit_mgr, process, "Обрабатывает заявку")
+Rel(process, conveyor_db, "Заявка и решение")
+
+Rel(process, score_api, "Запрос оценки", "REST API")
+Rel(score_api, ml, "Данные клиента")
+Rel(ml, score_db, "Данные скоринга")
+Rel(score_api, bureau, "Общие данные нового клиента", "REST API")
+Rel(score_api, process, "Оценка клиента")
+
+Rel(abs, conveyor_db, "Заявки, раз в сутки")
+Rel(conveyor_db, abs, "Решения, раз в сутки")
+Rel(abs, score_api, "Клиент и платежи, раз в сутки")
+Rel(conveyor_db, score_api, "Договоры и платежи, раз в сутки")
+
+Rel(ibank, sms, "Код подтверждения")
+Rel(process, sms, "Статус и визит в отделение")
+@enduml
