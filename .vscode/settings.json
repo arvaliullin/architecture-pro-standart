@@ -6,7 +6,7 @@
   },
   "plantuml.render": "Local",
   "plantuml.java": "/usr/bin/java",
-  "plantuml.jar": "/opt/homebrew/opt/plantuml/libexec/plantuml.jar",
+  "plantuml.jar": "/home/linuxbrew/.linuxbrew/opt/plantuml/libexec/plantuml.jar",
   "plantuml.jarArgs": [
     "-DRELATIVE_INCLUDE=."
   ],
