@@ -1,0 +1,41 @@
+@startuml c4-context-online-credit
+!RELATIVE_INCLUDE = "."
+!include c4/C4_Context.puml
+
+title Контекст онлайн-заявки на кредит
+
+Person(client, "Клиент", "Подаёт заявку на кредит онлайн")
+Person(branch_mgr, "Менеджер отделения", "Продолжает или создаёт заявку в АБС")
+Person(credit_mgr, "Сотрудник кредитования", "Обрабатывает заявку в конвейере")
+
+System(site, "Сайт", "PHP, React. Условия и заявка нового клиента")
+System(ibank, "Интернет-банк", "Кредиты, предодобренное предложение и СМС-код")
+System(abs, "АБС", "Заявка в отделении и зачисление кредита")
+System(conveyor, "Кредитный конвейер", "Camunda, Java, Oracle. Обработка заявок")
+System(scoring, "Система скоринга", "Оценка клиента")
+System(sms, "СМС-шлюз", "Отправка уведомлений")
+System_Ext(bureau, "Бюро кредитных историй", "Общие данные нового клиента")
+System_Ext(telecom, "Телеком-оператор", "Доставка СМС")
+
+Rel(client, site, "Телефон, ФИО и паспорт")
+Rel(conveyor, site, "Условия и решение")
+Rel(site, conveyor, "Заявка")
+
+Rel(client, ibank, "Счёт, данные заявки и СМС-код")
+Rel(conveyor, ibank, "Условия, предложение и статус")
+Rel(ibank, conveyor, "Заявка")
+
+Rel(branch_mgr, abs, "Продолжает или создаёт заявку")
+Rel(abs, conveyor, "Заявки, раз в сутки")
+Rel(conveyor, abs, "Решения, раз в сутки")
+Rel(credit_mgr, conveyor, "Обрабатывает заявку")
+
+Rel(conveyor, scoring, "Запрос оценки", "REST API")
+Rel(scoring, conveyor, "Оценка клиента")
+Rel(scoring, bureau, "Общие данные", "REST API")
+
+Rel(ibank, sms, "Код подтверждения")
+Rel(conveyor, sms, "Статус и визит в отделение")
+Rel(sms, telecom, "Отправка СМС")
+Rel(telecom, client, "СМС")
+@enduml
