@@ -1,0 +1,20 @@
+@startuml c4-components-call-center
+!RELATIVE_INCLUDE = "."
+!include c4/C4_Component.puml
+
+title Компоненты системы кол-центра
+
+Person(operator, "Оператор кол-центра", "Консультирует по актуальным ставкам")
+System(excel, "Excel", "Актуальные ставки депозитов")
+
+Container_Boundary(call_sys, "Система кол-центра") {
+  Component(ui, "Веб-интерфейс", "React", "Показ актуальных ставок оператору")
+  Component(back, "Бэкенд", "Java Spring Boot", "Загрузка файла ставок")
+  ComponentDb(db, "База", "PostgreSQL", "Ставки для консультации")
+}
+
+Rel(excel, back, "Файл актуальных ставок")
+Rel(back, db, "Сохраняет ставки")
+Rel(ui, back, "Запрос ставок")
+Rel(operator, ui, "Смотрит ставки")
+@enduml

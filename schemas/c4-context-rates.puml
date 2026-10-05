@@ -1,0 +1,25 @@
+@startuml c4-context-rates
+!RELATIVE_INCLUDE = "."
+!include c4/C4_Context.puml
+
+title Контекст передачи актуальных ставок
+
+Person(client, "Клиент", "Уточняет условия депозита по телефону")
+Person(operator, "Оператор кол-центра", "Консультирует по актуальным ставкам")
+Person(partner_op, "Оператор партнёра", "Консультирует по файлу ставок")
+Person(dep_mgr, "Бэк-офис депозитов", "Работает со ставками в Excel")
+Person(cred_mgr, "Бэк-офис кредитов", "Считает актуальные ставки в Excel")
+
+System(excel, "Excel", "Актуальные ставки депозитов")
+System(call_sys, "Система кол-центра", "React, Java Spring Boot, PostgreSQL")
+System_Ext(partner, "Система партнёрского кол-центра", "Внешняя система")
+
+Rel(cred_mgr, excel, "Расчёт ставок")
+Rel(dep_mgr, excel, "Работа со ставками")
+Rel(excel, call_sys, "Файл актуальных ставок")
+Rel(excel, partner, "Файл актуальных ставок", "SFTP")
+Rel(operator, call_sys, "Смотрит ставки")
+Rel(partner_op, partner, "Смотрит ставки")
+Rel(client, operator, "Звонок")
+Rel(client, partner_op, "Звонок")
+@enduml
