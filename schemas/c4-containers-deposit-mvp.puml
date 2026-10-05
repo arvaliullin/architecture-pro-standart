@@ -1,0 +1,53 @@
+@startuml c4-containers-deposit-mvp
+!RELATIVE_INCLUDE = "."
+!include c4/C4_Container.puml
+
+title Контейнеры MVP открытия депозитов
+
+Person(client, "Клиент", "Подаёт заявку на депозит")
+Person(call_mgr, "Менеджер кол-центра", "Звонит по заявке с сайта")
+Person(dep_mgr, "Менеджер бэк-офиса депозитов", "Подтверждает условия в АБС")
+Person(cred_mgr, "Сотрудник бэк-офиса кредитов", "Смотрит кредитный риск")
+Person(front_mgr, "Сотрудник отделения", "Идентифицирует нового клиента")
+
+System_Ext(site, "Сайт", "PHP, React")
+System_Ext(call_sys, "Система кол-центра", "Платформа подрядчика")
+System_Ext(excel, "Excel", "Расчёт ставок")
+System_Ext(email, "Электронная почта", "Согласование ставки")
+System_Ext(sms, "СМС-шлюз", "IT-отдел банка")
+System_Ext(telecom, "Телеком-оператор", "Отправка СМС")
+
+System_Boundary(ibank, "Интернет-банк") {
+  Container(mono, "Монолит", "ASP.NET MVC 4.5, .NET Framework 4.5, MS SQL", "Платежи, текущие счета и ядро СМС")
+  Container(deposit, "Открытие депозита", ".NET, MS SQL", "Заявка на депозит, отдельно от монолита")
+}
+
+System_Boundary(abs, "АБС") {
+  Container(desk, "Десктопный клиент", "Delphi", "Подтверждение условий депозита")
+  ContainerDb(abs_db, "База АБС", "Oracle, PL/SQL", "Учёт депозита и ставка")
+}
+
+Rel(client, site, "Ставки, телефон и ФИО")
+Rel(site, call_sys, "Заявка")
+Rel(call_mgr, call_sys, "Изучает заявку")
+Rel(call_sys, abs, "Обращение")
+
+Rel(client, deposit, "Ставки, счёт и сумма")
+Rel(client, mono, "СМС-код")
+Rel(mono, sms, "Код подтверждения")
+Rel(deposit, abs, "Заявка")
+Rel(abs, deposit, "Ставка")
+
+Rel(dep_mgr, desk, "Подтверждает условия")
+Rel(desk, abs_db, "Условия депозита")
+Rel(cred_mgr, desk, "Кредитный риск")
+Rel(dep_mgr, excel, "Расчёт ставки")
+Rel(cred_mgr, excel, "Расчёт ставки")
+Rel(cred_mgr, email, "Показатели и риск")
+Rel(dep_mgr, email, "Ответ со ставкой")
+Rel(front_mgr, desk, "Идентификация")
+
+Rel(abs_db, sms, "Уведомление о ставке и открытии")
+Rel(sms, telecom, "Отправка СМС")
+Rel(telecom, client, "СМС")
+@enduml
