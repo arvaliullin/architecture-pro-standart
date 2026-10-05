@@ -1,4 +1,5 @@
 {
+  "markdown.preview.securityLevel": "insecureLocalContent",
   "files.associations": {
     "*.puml": "plantuml",
     "*.plantuml": "plantuml",

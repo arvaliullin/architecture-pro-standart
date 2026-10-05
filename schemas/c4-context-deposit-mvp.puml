@@ -1,0 +1,45 @@
+@startuml c4-context-deposit-mvp
+!RELATIVE_INCLUDE = "."
+!include c4/C4_Context.puml
+
+title Контекст MVP открытия депозитов
+
+Person(client, "Клиент", "Новый клиент на сайте или клиент интернет-банка")
+Person(call_mgr, "Менеджер кол-центра", "Звонит по заявке с сайта")
+Person(dep_mgr, "Менеджер бэк-офиса депозитов", "Согласует ставку и подтверждает условия")
+Person(cred_mgr, "Сотрудник бэк-офиса кредитов", "Смотрит кредитный риск и считает ставку")
+Person(front_mgr, "Сотрудник отделения", "Идентифицирует нового клиента")
+
+System(site, "Сайт", "PHP, React. Список депозитов и заявка")
+System(ibank, "Интернет-банк", "Заявка на депозит и СМС-код")
+System(call_sys, "Система кол-центра", "Платформа подрядчика")
+System(abs, "АБС", "Учёт депозита и подтверждение условий")
+System(excel, "Excel", "Расчёт ставок")
+System(email, "Электронная почта", "Согласование ставки")
+System(sms, "СМС-шлюз", "Поддерживает IT-отдел банка")
+System_Ext(telecom, "Телеком-оператор", "Отправка СМС")
+
+Rel(client, site, "Ставки, телефон и ФИО")
+Rel(site, call_sys, "Заявка")
+Rel(call_mgr, call_sys, "Изучает заявку")
+Rel(call_mgr, client, "Звонок, особые условия")
+Rel(call_sys, abs, "Обращение")
+Rel(client, front_mgr, "Идентификация в отделении")
+Rel(front_mgr, abs, "Идентификация")
+
+Rel(client, ibank, "Ставки, счёт, сумма, СМС-код")
+Rel(ibank, abs, "Заявка")
+Rel(abs, ibank, "Ставка")
+
+Rel(dep_mgr, excel, "Расчёт ставки")
+Rel(cred_mgr, excel, "Расчёт ставки")
+Rel(cred_mgr, abs, "Кредитный риск")
+Rel(cred_mgr, email, "Показатели и риск")
+Rel(dep_mgr, email, "Ответ со ставкой")
+Rel(dep_mgr, abs, "Подтверждает условия")
+
+Rel(ibank, sms, "Код подтверждения")
+Rel(abs, sms, "Уведомление о ставке и открытии")
+Rel(sms, telecom, "Отправка СМС")
+Rel(telecom, client, "СМС")
+@enduml
